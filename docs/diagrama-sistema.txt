@@ -1,0 +1,19 @@
+DIAGRAMA — PADRÃO BRIDGE / BIBLIOTECA
+
+              Notificacao (abstracao)
+                       |
+          +------------+-------------+
+          |            |             |
+      Emprestimo    Devolucao      Reserva
+          |            |             |
+          +------------+-------------+
+                       |
+                 CanalEnvio
+                       |
+            +----------+----------+
+            |          |          |
+          Email       SMS        Push
+
+A abstracao Notificacao mantém uma referencia para CanalEnvio.
+Assim, o tipo de aviso e o canal de envio podem variar
+independentemente.

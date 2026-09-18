@@ -1,0 +1,35 @@
+```mermaid
+classDiagram
+    class Notificacao {
+        <<abstract>>
+        #CanalEnvio canalEnvio
+        #String conteudo
+        +setCanalEnvio(CanalEnvio)
+        +setConteudo(String)
+        +mostrarConteudo() String
+        +disparar() boolean
+    }
+
+    class Emprestimo
+    class Devolucao
+    class Reserva
+
+    class CanalEnvio {
+        <<interface>>
+        +enviar(String) boolean
+    }
+
+    class CanalEmail
+    class CanalSMS
+    class CanalPush
+
+    Notificacao <|-- Emprestimo
+    Notificacao <|-- Devolucao
+    Notificacao <|-- Reserva
+
+    CanalEnvio <|.. CanalEmail
+    CanalEnvio <|.. CanalSMS
+    CanalEnvio <|.. CanalPush
+
+    Notificacao o--> CanalEnvio : Bridge
+```
